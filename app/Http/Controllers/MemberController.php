@@ -38,8 +38,32 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        return Carbon::parse($request->birth_date)->format('Y-m-d');
-        //return $request->all();
+        $request->validate([
+            'name'=>'required',
+            'age'=>'required | numeric',
+            'birth_date'=>'',
+            'contact'=>'required | max:10 | min:10',
+            'email'=> '',
+            'address'=>'required',
+            'height'=>'required|numeric',
+            'weight'=>'required|numeric',
+            'reference'=>'',
+            'married'=>'',
+            'status'=>'',
+            'goal'=>'',
+            'medical'=>'',
+            'comments'=>'',
+            'updateson'=>'',
+            'joining_date'=>'',
+            'followupby'=>'required',
+            'nextfollowup'=>'',
+            'remarks'=>'',
+            'service'=>'',
+            'servicecomment'=>'',
+        ]);
+
+        $age = null;
+
         if(is_array($request->updatesons))
         {$updateson = implode(",",$request->updatesons);}
         else
@@ -55,10 +79,11 @@ class MemberController extends Controller
         else
         {$servicescomment = "";}
 
+        /*
         if(isset($request->birth_date))
-        {$age = date_diff(date_create(Carbon::parse($request->birth_date)->format('Y-m-d')), date_create('today'))->y;}
+        {$age = date_diff(date_create(Carbon::parse($request->birth_date)->format('Y-m-d')), date_create('today'))->y;}*/
 
-        $request->merge(["age"=>$age,"updateson"=>$updateson,"service"=>$service,"servicecomment"=>$servicescomment]);
+        $request->merge(["updateson"=>$updateson,"service"=>$service,"servicecomment"=>$servicescomment]);
         Member::create($request->all());
         return redirect()->back();
     }
@@ -71,7 +96,7 @@ class MemberController extends Controller
      */
     public function show(Member $member)
     {
-        //
+        return view('member.display',compact('member'));
     }
 
     /**
@@ -94,7 +119,31 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        //return $request->all();
+        $request->validate([
+            'name'=>'required',
+            'age'=>'required | numeric',
+            'birth_date'=>'',
+            'contact'=>'required | max:10 | min:10',
+            'email'=>'',
+            'address'=>'required',
+            'height'=>'required|numeric',
+            'weight'=>'required|numeric',
+            'reference'=>'',
+            'married'=>'',
+            'status'=>'',
+            'goal'=>'',
+            'medical'=>'',
+            'comments'=>'',
+            'updateson'=>'',
+            'joining_date'=>'',
+            'followupby'=>'required',
+            'nextfollowup'=>'',
+            'remarks'=>'',
+            'service'=>'',
+            'servicecomment'=>'',
+        ]);
+
+        $age = null;
         if(is_array($request->updatesons))
         {$updateson = implode(",",$request->updatesons);}
         else
@@ -110,10 +159,11 @@ class MemberController extends Controller
         else
         {$servicescomment = "";}
 
+        /*
         if(isset($request->birth_date))
-        {$age = date_diff(date_create(Carbon::parse($request->birth_date)->format('Y-m-d')), date_create('today'))->y;}
+        {$age = date_diff(date_create(Carbon::parse($request->birth_date)->format('Y-m-d')), date_create('today'))->y;} "age"=>$age,*/
 
-        $request->merge(["age"=>$age,"updateson"=>$updateson,"service"=>$service,"servicecomment"=>$servicescomment]);
+        $request->merge(["updateson"=>$updateson,"service"=>$service,"servicecomment"=>$servicescomment]);
         $member->update($request->all());
         return redirect()->back();
     }
@@ -126,6 +176,7 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
+
         $member->delete();
         return response('Success');
     }
@@ -134,6 +185,9 @@ class MemberController extends Controller
     {
         $members = Member::all();
         return DataTables::of($members)
+            ->addColumn('name',function ($member){
+                return '<a href="member/'.$member->id.'">'.$member->name.'</a>';
+            })
             ->addColumn('edit',function ($member){
                 return '<button type="button" class="edit btn btn-sm btn-primary fa fa-pencil" 
                 data-name="'.$member->name.'"
@@ -162,7 +216,7 @@ class MemberController extends Controller
             ->addColumn('delete',function ($member){
                 return '<button type="button" class="delete btn btn-sm btn-danger  fa fa-trash" data-delete-id="'.$member->id.'" data-token="'.csrf_token().'" ></button>';
             })
-            ->rawColumns(['edit','delete'])
+            ->rawColumns(['name','edit','delete'])
             ->make(true);
     }
 }

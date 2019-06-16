@@ -36,21 +36,35 @@ class Member extends Model
 
     public function setBirthDateAttribute($value)
     {
-        $this->attributes['birth_date'] = Carbon::parse($value)->format('Y-m-d');
+        if(strlen($value)) {
+            $this->attributes['birth_date'] = Carbon::parse($value)->format('Y-m-d');
+        }
     }
     public function getBirthDateAttribute($value)
     {
-        return Carbon::parse($value)->format('m/d/Y');
+        if(strlen($value))
+        {
+            return Carbon::parse($value)->format('d-m-Y');
+        }
     }
 
     public function setJoiningDateAttribute($value)
     {
-       $this->attributes['joining_date'] = Carbon::parse($value)->format('Y-m-d');
+       if(strlen($value)) {
+            $this->attributes['joining_date'] = Carbon::parse($value)->format('Y-m-d');
+        }
     }
 
     public function getJoiningDateAttribute($value)
     {
-        return Carbon::parse($value)->format('m/d/Y');
+        if(strlen($value))
+        {
+            return Carbon::parse($value)->format('d-m-Y');
+        }
     }  
+
+    
+
+    
 
 }

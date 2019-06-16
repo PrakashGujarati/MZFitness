@@ -11,9 +11,32 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/register', 'HomeController@index')->name('home');
+
+Route::group( [ 'middleware' => 'auth' ], function()
+{
+    Route::get('/dashboard', function () {
+        $members = App\Member::limit(4)->orderBy('id', 'DESC')->get();
+        return view('dashboard',compact('members'));
+    });
+
+    Route::get('member/getDataTable','MemberController@getDataTable');
+    Route::resource('member','MemberController');
+    
+    Route::get('employee/getDataTable','EmployeeController@getDataTable');
+    Route::resource('employee','EmployeeController');
+
+    Route::get('employeeSchedule/getDataTable','EmployeeScheduleController@getDataTable');
+    Route::resource('employeeSchedule','EmployeeScheduleController');
+
+
+    // Database Operations 
+	Route::get('dbup','DatabaseController@up');
+	Route::get('dbdown','DatabaseController@down');
+
 });
 
-Route::get('member/getDataTable','MemberController@getDataTable');
-Route::resource('member','MemberController');
+

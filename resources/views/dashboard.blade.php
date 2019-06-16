@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 @section('title','dashboard')
 @section('page_head')
 
@@ -24,17 +24,17 @@
       <div class="row">
         <div class="col-xl-3 col-md-6 col-12">
           <div class="info-box bg-blue">
-            <span class="info-box-icon push-bottom"><i class="ion ion-ios-pricetag-outline"></i></span>
+            <span class="info-box-icon push-bottom"><i class="ion ion-ios-person-outline"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">New Clients</span>
-              <span class="info-box-number">450</span>
+              <span class="info-box-number">150</span>
 
               <div class="progress">
                 <div class="progress-bar" style="width: 45%"></div>
               </div>
               <span class="progress-description">
-                    45% Increase in 28 Days
+                    Increase
                   </span>
             </div>
             <!-- /.info-box-content -->
@@ -44,17 +44,17 @@
         <!-- /.col -->
         <div class="col-xl-3 col-md-6 col-12">
           <div class="info-box bg-green">
-            <span class="info-box-icon push-bottom"><i class="ion ion-ios-eye-outline"></i></span>
+            <span class="info-box-icon push-bottom"><i class="ion ion-ios-people-outline"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">Total Visits</span>
-              <span class="info-box-number">15,489</span>
+              <span class="info-box-number">250</span>
 
               <div class="progress">
                 <div class="progress-bar" style="width: 40%"></div>
               </div>
               <span class="progress-description">
-                    40% Increase in 28 Days
+                    20% Increase in 28 Days
                   </span>
             </div>
             <!-- /.info-box-content -->
@@ -64,17 +64,17 @@
         <!-- /.col -->
         <div class="col-xl-3 col-md-6 col-12">
           <div class="info-box bg-purple">
-            <span class="info-box-icon push-bottom"><i class="ion ion-ios-cloud-download-outline"></i></span>
+            <span class="info-box-icon push-bottom"><i class="ion ion-ios-medical-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Downloads</span>
-              <span class="info-box-number">55,005</span>
+              <span class="info-box-text">Employees</span>
+              <span class="info-box-number">25</span>
 
               <div class="progress">
                 <div class="progress-bar" style="width: 85%"></div>
               </div>
               <span class="progress-description">
-                    85% Increase in 28 Days
+                    Working
                   </span>
             </div>
             <!-- /.info-box-content -->
@@ -84,10 +84,10 @@
         <!-- /.col -->
         <div class="col-xl-3 col-md-6 col-12">
           <div class="info-box bg-red">
-            <span class="info-box-icon push-bottom"><i class="ion-ios-chatbubble-outline"></i></span>
+            <span class="info-box-icon push-bottom"><i class="ion ion-ios-thunderstorm-outline"></i></span>
 
             <div class="info-box-content">
-              <span class="info-box-text">Direct Chat</span>
+              <span class="info-box-text">Trainee</span>
               <span class="info-box-number">13,921</span>
 
               <div class="progress">
@@ -105,11 +105,11 @@
       </div>
       <!-- /.row -->
       <div class="row">
-        <div class="col-xl-4 connectedSortable"> 
+        <div class="col-xl-12 connectedSortable">
           <!-- PRODUCT LIST -->
         <div class="box box-primary">
         <div class="box-header with-border">
-          <h3 class="box-title">Recently Products</h3>
+          <h3 class="box-title">Recently Members</h3>
 
           <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -120,63 +120,27 @@
         <!-- /.box-header -->
         <div class="box-body">
           <ul class="products-list product-list-in-box">
+
+            @foreach($members as $member)
           <li class="item">
             <div class="product-img">
-            <img src="images/default-50x50.gif" alt="Product Image">
+            <img src="{{asset('/public/images/avatar5.png')}}" alt="Member Image">
             </div>
             <div class="product-info">
-            <a href="javascript:void(0)" class="product-title">iphone 7plus
-              <span class="label label-warning pull-right">$300</span></a>
+            <a href="member/{{$member->id}}" class="product-title">{{$member->name}}
+              <span class="label label-warning pull-right">view</span></a>
             <span class="product-description">
-                12MP Wide-angle and telephoto cameras.
+                {{$member->email}}
               </span>
             </div>
           </li>
-          <!-- /.item -->
-          <li class="item">
-            <div class="product-img">
-            <img src="images/default-50x50.gif" alt="Product Image">
-            </div>
-            <div class="product-info">
-            <a href="javascript:void(0)" class="product-title">Apple Tv
-              <span class="label label-info pull-right">$400</span></a>
-            <span class="product-description">
-                Library | For You | Browse | Radio
-              </span>
-            </div>
-          </li>
-          <!-- /.item -->
-          <li class="item">
-            <div class="product-img">
-            <img src="images/default-50x50.gif" alt="Product Image">
-            </div>
-            <div class="product-info">
-            <a href="javascript:void(0)" class="product-title">MacBook Air<span
-              class="label label-danger pull-right">$450</span></a>
-            <span class="product-description">
-                Make big things happen. All day long.
-              </span>
-            </div>
-          </li>
-          <!-- /.item -->
-          <li class="item">
-            <div class="product-img">
-            <img src="images/default-50x50.gif" alt="Product Image">
-            </div>
-            <div class="product-info">
-            <a href="javascript:void(0)" class="product-title">iPad Pro
-              <span class="label label-success pull-right">$289</span></a>
-            <span class="product-description">
-                Anything you can do, you can do better.
-              </span>
-            </div>
-          </li>
+          @endforeach
           <!-- /.item -->
           </ul>
         </div>
         <!-- /.box-body -->
         <div class="box-footer text-center">
-          <a href="javascript:void(0)" class="uppercase">View All Products</a>
+          <a href="member" class="uppercase">View All Members</a>
         </div>
         <!-- /.box-footer -->
         </div>           
@@ -188,9 +152,7 @@
 @endsection
 
 @section('page_script')
-  <!-- minimal_admin dashboard demo (This is only for demo purposes) -->
-  <script src="js/pages/dashboard.js"></script>
-  
-  <!-- minimal_admin for demo purposes -->
-  <script src="js/demo.js"></script>
+ 
+  <script src="{{asset('/public/js/pages/dashboard.js')}}"></script>
+  <script src="{{asset('/public/js/demo.js')}}"></script>
 @endsection

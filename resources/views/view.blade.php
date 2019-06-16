@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 @section('title','table')
 @section('page_head')
 
@@ -248,7 +248,6 @@
     <script src="assets/vendor_plugins/DataTables-1.10.15/extensions/Buttons/js/buttons.print.min.js"></script>
     <!-- end - This is for export functionality only -->
 
-    <!-- minimal_admin for Data Table -->
     <script type="text/javascript">
       $(function () {
         "use strict";

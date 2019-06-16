@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 @section('title','Members')
 @section('page_head')
 
@@ -58,7 +58,7 @@
                             <span aria-hidden="true">&times;</span></button>
                     </div>
                     <div class="modal-body">
-                        <form action="/member" method="post" id="addform"  role="form">
+                        <form action="member" method="post" id="addform"  role="form">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -68,8 +68,12 @@
                                             <input type="text" class="form-control" id="name" name="name"
                                                    placeholder="Enter Name">
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="">Birthdate (mm/dd/yyyy)</label>
+                                        <div class="form-group col-md-2">
+                                            <label for="">Age</label>
+                                            <input type="text" class="form-control pull-right" name="age" id="age" placeholder="Age">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="">Birthdate (dd-mm-yyyy)</label>
                                             <input type="text" class="form-control pull-right datepicker" name="birth_date" id="birth_date" placeholder="Enter Birthdate">
                                         </div>
                                     </div>
@@ -89,7 +93,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Address</label>
-                                        <textarea name="address" id="input" placeholder="Enter Address" name="address"
+                                        <textarea name="address" id="address" placeholder="Enter Address" name="address"
                                                   class="form-control" rows="6"></textarea>
                                     </div>
                                 </div>
@@ -115,18 +119,21 @@
                                 <div class="col-md-4">
                                     <label for="">Marital Status</label>
                                     <select name="married" id="married" class="form-control">
+                                        <option value="notselected">Not Selected</option>
                                         <option value="married">Married</option>
                                         <option value="unmarried">Unmarried</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="">Current Status</label>
+                                    <label for="">Current Status</label><br>
                                     <select name="status" id="status" class="form-control">
+                                        <option value="notselected">Not Selected</option>
                                         <option value="housewife">Housewife</option>
                                         <option value="employed">Employed</option>
                                         <option value="student">Student</option>
                                         <option value="others">Others</option>
                                     </select>
+                                    <span id="statusadd"></span>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="">Your Goal</label>
@@ -177,8 +184,8 @@
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-4">
-                                    <label for="">Joining Date (mm/dd/yyyy)</label>
-                                    <input type="text" class="form-control pull-right datepicker" name="joining_date" id="joining_date">
+                                    <label for="">Joining Date (dd-mm-yyyy)</label>
+                                    <input type="text" class="form-control pull-right datepicker" name="joining_date" id="joining_date" placeholder="Enter Joining Date">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="">Followup By</label>
@@ -207,13 +214,13 @@
                                         <option>Stamina Batch</option>
                                     </select>
                                    <a class="btn btn-primary" id="addservice" style="float:right;"><i class="fa fa-plus"></i></a>
-                                </div>                                
+                                </div>
                                 <div class="form-group col-md-8">
                                     <label for="">Remarks</label>
                                     <input type="text" class="form-control" name="remarks" id="remarks"
                                            placeholder="Enter Remarks">
                                 </div>
-                                
+
                             </div>
                             <div class="row" id="servicescontent">
                             </div>
@@ -249,7 +256,11 @@
                                             <input type="text" class="form-control" id="name" name="name"
                                                    placeholder="Enter Name">
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-2">
+                                            <label for="">Age</label>
+                                            <input type="text" class="form-control pull-right" name="age" id="age" placeholder="Age">
+                                        </div>
+                                        <div class="form-group col-md-4">
                                             <label for="">Birthdate (mm/dd/yyyy)</label>
                                             <input type="text" class="form-control pull-right datepicker" 
                                             name="birth_date" id="birth_date" placeholder="Enter Birthdate">
@@ -271,7 +282,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Address</label>
-                                        <textarea name="address" id="input" placeholder="Enter Address" name="address"
+                                        <textarea name="address" id="address" placeholder="Enter Address" name="address"
                                                   class="form-control" rows="6"></textarea>
                                     </div>
                                 </div>
@@ -297,18 +308,21 @@
                                 <div class="col-md-4">
                                     <label for="">Marital Status</label>
                                     <select name="married" id="married" class="form-control">
+                                        <option value="notselected">Not Selected</option>
                                         <option value="married">Married</option>
                                         <option value="unmarried">Unmarried</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <label for="">Current Status</label>
+                                    <label for="">Current Status</label><br>
                                     <select name="status" id="status" class="form-control">
+                                        <option value="notselected">Not Selected</option>
                                         <option value="housewife">Housewife</option>
                                         <option value="employed">Employed</option>
                                         <option value="student">Student</option>
                                         <option value="others">Others</option>
                                     </select>
+                                    <span id="statusadd"></span>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="">Your Goal</label>
@@ -360,7 +374,7 @@
                             <div class="row">
                                 <div class="form-group col-md-4">
                                     <label for="">Joining Date (mm/dd/yyyy)</label>
-                                    <input type="text" class="form-control pull-right datepicker" name="joining_date" id="joining_date">
+                                    <input type="text" class="form-control pull-right datepicker" name="joining_date" id="joining_date" placeholder="Enter Joining Date">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="">Followup By</label>
@@ -400,7 +414,7 @@
                             </div>
                             <div class="modal-footer  float-right">
                                 <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
-                                <button type="Submit" class="btn btn-primary btn-lg float-right">Add</button>
+                                <button type="Submit" class="btn btn-primary btn-lg float-right">Update</button>
                             </div>
                         </form>
                     </div>
@@ -413,27 +427,30 @@
 
 @section('page_script')
     <!-- DataTables -->
-    <script src="{{asset('assets/vendor_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/vendor_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+    <script src="{{asset('/public/assets/vendor_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('/public/assets/vendor_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
 
 
     <!-- This is data table -->
-    <script src="{{asset('assets/vendor_plugins/DataTables-1.10.15/media/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('/public/assets/vendor_plugins/DataTables-1.10.15/media/js/jquery.dataTables.min.js')}}"></script>
 
     	<!-- bootstrap datepicker -->
-    <script src="{{asset('assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
-    
-    	<!-- bootstrap datepicker -->	
-	<link rel="stylesheet" href="{{asset('assets/vendor_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
+    <script src="{{asset('/public/assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 
-    <!-- minimal_admin for Data Table -->
+    <!-- bootstrap datepicker -->
+	<link rel="stylesheet" href="{{asset('/public/assets/vendor_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
+
+    <script src="{{asset('/public/assets/vendor_components/jquery-validation-1.17.0/dist/jquery.validate.min.js')}}"></script>
+
+
+
     <script type="text/javascript">
         $(document).ready(function () {
            // $('#members').DataTable();
 
             //Date picker
             $('.datepicker').datepicker({
-                format: 'mm/dd/yyyy',
+                format: 'dd-mm-yyyy',
                 autoclose: true
             });
 
@@ -442,20 +459,50 @@
 
             $("#addform #addservice").click(function(){
                 var service = $('#addform #service').val();
-                var data = "<div class='row col-md-12'><div class='form-group col-md-4'><input class='form-control' name='services[]' " +
-                    "type='text' value='"+service+"' readonly></div>" +
-                    "<div class='form-group col-md-7'><input class='form-control' name='servicescomments[]' type='text'></div>" +
-                    "<a class='btn btn-danger removeservice' style='float:right;height:35px;'><i class='fa fa-minus'></i></a></div>";
-                $("#addform #servicescontent").append(data);
+                if($("input[value='"+service+"']").val()!=service){
+                    var data = "<div class='row col-md-12'><div class='form-group col-md-4'><input class='form-control services' name='services[]' " +
+                        "type='text' value='"+service+"' readonly></div>" +
+                        "<div class='form-group col-md-7'><input class='form-control' name='servicescomments[]' type='text'></div>" +
+                        "<a class='btn btn-danger removeservice' style='float:right;height:35px;'><i class='fa fa-minus'></i></a></div>";
+                    $("#addform #servicescontent").append(data);
+                }
             });
 
             $("#editform #addservice").click(function(){
                 var service = $('#editform #service').val();
-                var data = "<div class='row col-md-12'><div class='form-group col-md-4'><input class='form-control' name='services[]' " +
-                    "type='text' value='"+service+"' readonly></div>" +
-                    "<div class='form-group col-md-7'><input class='form-control' name='servicescomments[]' type='text'></div>" +
-                    "<a class='btn btn-danger removeservice' style='float:right;height:35px;'><i class='fa fa-minus'></i></a></div>";
-                $("#editform #servicescontent").append(data);
+                if($("input[value='"+service+"']").val()!=service) {
+                    var data = "<div class='row col-md-12'><div class='form-group col-md-4'><input class='form-control services' name='services[]' " +
+                        "type='text' value='" + service + "' readonly></div>" +
+                        "<div class='form-group col-md-7'><input class='form-control' name='servicescomments[]' type='text'></div>" +
+                        "<a class='btn btn-danger removeservice' style='float:right;height:35px;'><i class='fa fa-minus'></i></a></div>";
+                    $("#editform #servicescontent").append(data);
+                }
+            });
+
+            $("#addform #status").change(function(){
+                if($(this).val()=="others"){
+                    $(this).css({"width":"30%","display":"inline"});
+                    $(this).attr("name","");
+                    $('#addform #statusadd').html("<input name='status' type='text' style='height: 2.4rem;width: 65%'>");
+                }else
+                {
+                    $(this).css({"width":"100%"});
+                    $(this).attr("name","status");
+                    $('#addform #statusadd').html("");
+                }
+            });
+
+            $("#editform #status").change(function(){
+                if($(this).val()=="others"){
+                    $(this).css({"width":"30%","display":"inline"});
+                    $(this).attr("name","");
+                    $('#editform #statusadd').html("<input name='status' type='text' style='height: 2.4rem;width: 65%'>");
+                }else
+                {
+                    $(this).css({"width":"100%"});
+                    $(this).attr("name","status");
+                    $('#editform #statusadd').html("");
+                }
             });
 
             $("body").on("click",".removeservice", function(){
@@ -465,7 +512,7 @@
             mytable = $('.dynamic-table').DataTable({
                 "processing": true,
                 "serverSide": true,
-                "ajax": "{{ url('/member/getDataTable') }}",
+                "ajax": "{{ url('member/getDataTable') }}",
                 columns: [
                     {data: "name"},
                     {data: "contact"},
@@ -537,22 +584,150 @@
                 });
                 
                 servicearray = service.split(','); 
-                servicecommentarray = servicecomment.split('|');                 
+                servicecommentarray = servicecomment.split('|');
 
+                if(status=="housewife" || status=="employed" || status=="student")
+                {}
+                else
+                {
+                    $('#editform #status').css({"width":"30%","display":"inline"});
+                    $(this).attr("name","");
+                    $(this).val("other");
+                    $('#editform #statusadd').html("<input name='status' value='"+status+"' type='text' style='height: 2.4rem;width: 65%'>");
+                }
+
+                $("#editform #servicescontent").html("");
                 $.each(servicearray, function (index, value) {      
                     if(value!="")
                     {
                         var data = "<div class='row col-md-12'><div class='form-group col-md-4'>"+
-                        "<input class='form-control' name='services[]' type='text' value='"+value+"' readonly></div>" +
+                        "<input class='form-control services' name='services[]' type='text' value='"+value+"' readonly></div>" +
                         "<div class='form-group col-md-7'><input class='form-control' value='"+servicecommentarray[index]+"' name='servicescomments[]' type='text'></div>" +
                         "<a class='btn btn-danger removeservice' style='float:right;height:35px;'><i class='fa fa-minus'></i></a></div>";
                         $("#editform #servicescontent").append(data);
                     }
                 });
 
-                $('#editform').attr('action', '/member/' + id);
+                $('#editform').attr('action', 'member/' + id);
                 $('#editmodal').modal('show');  
             });   
+
+            /* DELETE Record using AJAX Requres */
+            $(document).on('click', '.delete', function () {
+                var id = $(this).data("delete-id");
+                var token = $(this).data("token");
+                swal({
+                    title: "Are you sure?",
+                    text: "Do you want to delete it perminantly !",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#f83f37",
+                    confirmButtonText: "Yes, delete it!",
+                    cancelButtonText: "No, cancel!",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                }, function(isConfirm){
+                    if (isConfirm) {
+                        $.ajax(
+                            {
+                                url: "member/" + id,
+                                type: 'POST',
+                                data: {
+                                    "id": id,
+                                    "_method": 'DELETE',
+                                    "_token": token
+                                },
+                                success: function (result) {
+                                    swal("Deleted!", "Your Record is deleted.", "success");
+                                    mytable.draw();
+                                },
+                                error: function (request, status, error) {
+                                    var val = request.responseText;
+                                    console.log(val);
+                                    alert("error" + val);
+                                }
+                            });
+                    } else {
+                        swal("Cancelled", "Your record is safe :)", "error");
+                    }
+                });
+                return false;
+            });
+
+            /* ADD Record using AJAX Requres */
+            var addformValidator = $("#addform").validate({
+                ignore: ":hidden",
+                errorElement: "span",
+                errorClass: "text-danger",
+                validClass: "text-success",
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass(errorClass);
+                    $(element.form).find("span[id=" + element.id + "-error]").addClass(errorClass);
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).removeClass(errorClass);
+                    $(element.form).find("span[id=" + element.id + "-error]").removeClass(errorClass);
+                },
+                submitHandler: function (form) {
+                    $.ajax({
+                        type: "POST",
+                        url: $(form).attr('action'),
+                        method: $(form).attr('method'),
+                        data: $(form).serialize(),
+                        success: function (data) {
+                            $("#addmodal .close").click();
+                            swal("Good job!", "Your Record Inserted Successfully", "success");
+                            $(form).trigger('reset');
+                            mytable.draw();
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            var response = JSON.parse(XMLHttpRequest.responseText);
+                            addformValidator.showErrors(response.errors);
+                            console.log(response.errors);
+
+                        }
+                    });
+                    return false; // required to block normal submit since you used ajax
+                }
+            });
+
+            /* EDIT Record using AJAX Requres */
+            var editaddformValidator = $("#editform").validate({
+                ignore: ":hidden",
+                errorElement: "span",
+                errorClass: "text-danger",
+                validClass: "text-success",
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass(errorClass);
+                    $(element.form).find("span[id=" + element.id + "-error]").addClass(errorClass);
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).removeClass(errorClass);
+                    $(element.form).find("span[id=" + element.id + "-error]").removeClass(errorClass);
+                },
+                submitHandler: function (form,e) {
+                    e.preventDefault();
+                    $.ajax({
+                        type: 'POST',
+                        url: $(form).attr('action'),
+                        data: new FormData($("#editform")[0]),
+                        contentType: false,
+                        cache: false,
+                        processData:false,
+                        success: function (data) {
+                            $("#editmodal .close").click();
+                            swal("Good job!", "Your Record Updated Successfully", "success");
+                            $(form).trigger('reset');
+                            mytable.draw();
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            var response = JSON.parse(XMLHttpRequest.responseText);
+                            editaddformValidator.showErrors(response.errors);
+                        }
+                    });
+                    return false; // required to block normal submit since you used ajax
+                }
+            });
 
         });
     </script>

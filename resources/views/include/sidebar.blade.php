@@ -4,10 +4,10 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="image float-left">
-          <img src="images/user2-160x160.jpg" class="rounded-circle" alt="User Image">
+          <img src="{{asset('/public/images/user2-160x160.jpg')}}" class="rounded-circle" alt="User Image">
         </div>
         <div class="info float-left">
-          <p>Minimal Template</p>
+          <p>MZFitnezz</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
 		  </div>
@@ -16,13 +16,18 @@
       <ul class="sidebar-menu" data-widget="tree">
         
         <li>
-          <a href="/dashboard">
+          <a href="{{asset('/dashboard')}}">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>           
           </a>
         </li>
         <li>
-          <a href="/member">
+          <a href="{{asset('/member')}}">
             <i class="fa fa-users"></i> <span>Members</span>           
+          </a>
+        </li>
+        <li>
+          <a href="{{asset('/employee')}}">
+            <i class="fa fa-users"></i> <span>Employees</span>           
           </a>
         </li>
        <!-- <li class="treeview">
