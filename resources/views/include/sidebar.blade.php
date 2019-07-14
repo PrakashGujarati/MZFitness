@@ -30,6 +30,11 @@
             <i class="fa fa-users"></i> <span>Employees</span>           
           </a>
         </li>
+          <li>
+          <a href="{{asset('/employeeSchedule')}}">
+            <i class="fa fa-users"></i> <span>Employees Schedule</span>
+          </a>
+        </li>
        <!-- <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>

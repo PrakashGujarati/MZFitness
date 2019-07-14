@@ -2,35 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34e6bd10-307f-4d21-ac72-0cce0b20341c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/MZFitness.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MZFitness.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MemberController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MemberController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Member.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Member.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/.htaccess" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/web.config" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/blank.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/blank.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/include/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/include/head.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/include/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/include/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/include/navtopbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/include/navtopbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/include/script.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/include/script.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_01_085732_create_employee_schedules_table.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/include/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/include/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/member/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/member/view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/table.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/03822249dd1c33d2467e677d39c51395c25aa321.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/03822249dd1c33d2467e677d39c51395c25aa321.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/3111cf19213414b181c89238bc9b6831b84d70ef.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/3111cf19213414b181c89238bc9b6831b84d70ef.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/5bb460798ec4ae5d5c5d37aa8e55efd020f22876.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/5bb460798ec4ae5d5c5d37aa8e55efd020f22876.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/6d1b116a68baf7c3722535367f6e8d8898ced2cc.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/6d1b116a68baf7c3722535367f6e8d8898ced2cc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/b8bb83f6cc88ecbc739eff6131842a160fbbd47c.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/b8bb83f6cc88ecbc739eff6131842a160fbbd47c.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/views/b99cc7224fd33f4e8c7fd8dcfa402c28516d7cdb.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/b99cc7224fd33f4e8c7fd8dcfa402c28516d7cdb.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -120,19 +94,39 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="609154984">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="php" value="629" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Blade" value="2" />
+          <entry key="PHP" value="627" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="php" value="15" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Blade" value="1" />
+          <entry key="PHP" value="14" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -184,7 +178,6 @@
         <option value="$PROJECT_DIR$/resources/views/include/header.blade.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/.htaccess" />
-        <option value="$PROJECT_DIR$/resources/views/include/sidebar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/include/script.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
         <option value="$PROJECT_DIR$/resources/views/include/navtopbar.blade.php" />
@@ -198,6 +191,14 @@
         <option value="$PROJECT_DIR$/resources/views/member/view.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/include/sidebar.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_07_14_071200_create_workplaces_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_07_14_071218_create_batches_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_07_14_071256_create_packages_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_07_14_071315_create_employee_schedules_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_07_14_071312_create_batch_members_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_07_14_071334_create_employee_workouts_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_07_14_071353_create_feedback_table.php" />
       </list>
     </option>
   </component>
@@ -212,6 +213,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
       <path value="$PROJECT_DIR$/package.json" />
+      <path value="$PROJECT_DIR$/public/assets/datetimepicker/package.json" />
     </packageJsonPaths>
   </component>
   <component name="PackageJsonUpdateNotifier">
@@ -321,45 +323,18 @@
             <path>
               <item name="MZFitnezz" type="b2602c69:ProjectViewProjectNode" />
               <item name="MZFitnezz" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MZFitnezz" type="b2602c69:ProjectViewProjectNode" />
               <item name="MZFitnezz" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MZFitnezz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MZFitnezz" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MZFitnezz" type="b2602c69:ProjectViewProjectNode" />
               <item name="MZFitnezz" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MZFitnezz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MZFitnezz" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MZFitnezz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MZFitnezz" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MZFitnezz" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MZFitnezz" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="member" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -369,7 +344,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="web&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitnezz/routes/web.php&#10;app.blade.php&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitnezz/resources/views/layouts/app.blade.php&#10;Contro&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitnezz/app/Http/Controllers/MemberController.php&#10;dash&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitnezz/resources/views/dashboard.blade.php&#10;MemberController&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitnezz/app/Http/Controllers/MemberController.php&#10;LoginCo&#9;null&#9;null&#10;omeC&#9;null&#9;null&#10;web.php&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitnezz/routes/web.php&#10;Regi&#9;null&#9;null&#10;MemberCon&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitnezz/app/Http/Controllers/MemberController.php&#10;script&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitnezz/resources/views/include/script.blade.php&#10;jquery.validate.min.js&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitnezz/public/assets/vendor_components/jquery-validation-1.17.0/dist/jquery.validate.min.js&#10;Memb&#9;null&#9;null&#10;sidb&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitness/resources/views/include/sidebar.blade.php&#10;sid&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitness/resources/views/include/sidebar.blade.php&#10;memberCo&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="side&#9;FILE&#9;file://D:/xampp/htdocs/MZFitnezz/resources/views/include/sidebar.blade.php&#10;web&#9;FILE&#9;file://D:/xampp/htdocs/MZFitnezz/routes/web.php&#10;app.blade.php&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitnezz/resources/views/layouts/app.blade.php&#10;Contro&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitnezz/app/Http/Controllers/MemberController.php&#10;dash&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitnezz/resources/views/dashboard.blade.php&#10;MemberController&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitnezz/app/Http/Controllers/MemberController.php&#10;LoginCo&#9;null&#9;null&#10;omeC&#9;null&#9;null&#10;web.php&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitnezz/routes/web.php&#10;Regi&#9;null&#9;null&#10;MemberCon&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitnezz/app/Http/Controllers/MemberController.php&#10;script&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitnezz/resources/views/include/script.blade.php&#10;jquery.validate.min.js&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitnezz/public/assets/vendor_components/jquery-validation-1.17.0/dist/jquery.validate.min.js&#10;Memb&#9;null&#9;null&#10;sidb&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitness/resources/views/include/sidebar.blade.php&#10;sid&#9;FILE&#9;file://C:/xampp/htdocs/Laravel/MZFitness/resources/views/include/sidebar.blade.php&#10;memberCo&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -416,17 +391,17 @@
       <workItem from="1558414977378" duration="3796000" />
       <workItem from="1558441718999" duration="8067000" />
       <workItem from="1558499665036" duration="7735000" />
+      <workItem from="1563088132925" duration="1964000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30511000" />
+    <option name="totallyTimeSpent" value="32475000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17516778" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16504854" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -441,34 +416,12 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286119" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3286119" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32794458" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
     </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17516778" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" side_tool="true" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286119" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3286119" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -490,13 +443,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/include/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="22" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -626,30 +572,106 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="580" column="50" lean-forward="true" selection-start-line="580" selection-start-column="50" selection-end-line="580" selection-end-column="50" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
-            <element signature="e#29348#29986#0#HTML" />
-            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#34061#35849#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="16" column="62" lean-forward="true" selection-start-line="16" selection-start-column="62" selection-end-line="16" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state relative-caret-position="153">
           <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/include/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="4" lean-forward="true" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/employeeSchedule/view.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="76" column="53" lean-forward="true" selection-start-line="76" selection-start-column="53" selection-end-line="76" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="31" column="32" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_01_085732_create_employee_schedules_table.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_27_134515_create_employees_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="15" column="33" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_14_071315_create_employee_schedules_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="15" column="42" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_14_071218_create_batches_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="25" column="34" lean-forward="true" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_14_071200_create_workplaces_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="21" column="34" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="21" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_14_071256_create_packages_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="34" lean-forward="true" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_14_071312_create_batch_members_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="18" column="74" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="18" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_14_071334_create_employee_workouts_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="19" column="38" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="19" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_14_071353_create_feedback_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_17_094252_create_members_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
         </state>
       </provider>
     </entry>
