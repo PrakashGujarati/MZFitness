@@ -20,7 +20,7 @@ class CreatePackagesTable extends Migration
             $table->string('duration',20);
             $table->float('price',10,2);
             $table->string('package_description');
-            $table->string('package_description');
+            $table->string('status');
             $table->softDeletes();
         });
     }

@@ -9,26 +9,21 @@
               <!-- User image -->
               <li class="user-header">
                 <img src="<?php echo e(asset('/public/images/user2-160x160.jpg')); ?>" class="float-left rounded-circle" alt="User Image">
-
                 <p>
-                  Maical Clark
-                  <small class="mb-5">max@gmail.com</small>
-                  <a href="#" class="btn btn-primary btn-sm">View Profile</a>
+                    <?php echo e(Auth::user()->name); ?>
+
+                  <small class="mb-5">Admin</small>
+                  
+                    <a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                       <?php echo e(__('Logout')); ?> class="btn btn-block btn-danger"><i class="ion ion-power"></i> Log Out</a>
+                  <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                      <?php echo csrf_field(); ?>
+                  </form>
                 </p>
               </li>
-              
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-right">
-                  <a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                    <?php echo e(__('Logout')); ?> class="btn btn-block btn-danger"><i class="ion ion-power"></i> Log Out</a>
-                  <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
-                    <?php echo csrf_field(); ?>
-                  </form>
-                </div>
-			  </li>
             </ul>
           </li>
          
         </ul>
-      </div><?php /**PATH /home/wgujaratigraphic/public_html/MZFitnezz/resources/views/include/navtopbar.blade.php ENDPATH**/ ?>
+      </div>
+<?php /**PATH /home/wgujaratigraphic/public_html/MZFitnezz/resources/views/include/navtopbar.blade.php ENDPATH**/ ?>

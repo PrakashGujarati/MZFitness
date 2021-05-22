@@ -30,10 +30,7 @@
 	
 	<!-- iCheck for checkboxes and radio inputs -->
 	<link rel="stylesheet" href="<?php echo e(asset('public/assets/vendor_plugins/iCheck/all.css')); ?>">
-	
-	<!-- Bootstrap Color Picker 
-	<link rel="stylesheet" href="public/assets/vendor_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css"> -->
-	
+
 	<!-- Bootstrap time Picker -->
 	<link rel="stylesheet" href="<?php echo e(asset('public/assets/vendor_plugins/timepicker/bootstrap-timepicker.min.c')); ?>ss">
 	
@@ -42,6 +39,8 @@
 
 	<!-- Theme style -->
 	<link rel="stylesheet" href="<?php echo e(asset('public/css/master_style.css')); ?>">
+
+	<link rel="stylesheet" href="<?php echo e(asset('public/assets/vendor_components/sweetalert/sweetalert.css')); ?>">
 
 	<!-- minimal_admin Skins. Choose a skin from the css/skins
 	   folder instead of downloading all of them to reduce the load. -->

@@ -73,7 +73,7 @@
                                             <input type="text" class="form-control pull-right" name="age" id="age" placeholder="Age">
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label for="">Birthdate (dd-mm-yyyy)</label>
+                                            <label for="">Birthdate</label>
                                             <input type="text" class="form-control pull-right datepicker" name="birth_date" id="birth_date" placeholder="Enter Birthdate">
                                         </div>
                                     </div>
@@ -184,7 +184,7 @@
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-4">
-                                    <label for="">Joining Date (dd-mm-yyyy)</label>
+                                    <label for="">Joining Date</label>
                                     <input type="text" class="form-control pull-right datepicker" name="joining_date" id="joining_date" placeholder="Enter Joining Date">
                                 </div>
                                 <div class="form-group col-md-4">
@@ -261,7 +261,7 @@
                                             <input type="text" class="form-control pull-right" name="age" id="age" placeholder="Age">
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label for="">Birthdate (mm/dd/yyyy)</label>
+                                            <label for="">Birthdate</label>
                                             <input type="text" class="form-control pull-right datepicker" 
                                             name="birth_date" id="birth_date" placeholder="Enter Birthdate">
                                         </div>
@@ -373,7 +373,7 @@
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-4">
-                                    <label for="">Joining Date (mm/dd/yyyy)</label>
+                                    <label for="">Joining Date</label>
                                     <input type="text" class="form-control pull-right datepicker" name="joining_date" id="joining_date" placeholder="Enter Joining Date">
                                 </div>
                                 <div class="form-group col-md-4">

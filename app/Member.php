@@ -34,6 +34,11 @@ class Member extends Model
         'servicecomment',
     ];
 
+    public function batchmembers()
+    {
+        return $this->hasMany(BatchMember::class);
+    }
+
     public function setBirthDateAttribute($value)
     {
         if(strlen($value)) {

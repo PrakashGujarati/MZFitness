@@ -9,24 +9,17 @@
               <!-- User image -->
               <li class="user-header">
                 <img src="{{asset('/public/images/user2-160x160.jpg')}}" class="float-left rounded-circle" alt="User Image">
-
                 <p>
-                  Maical Clark
-                  <small class="mb-5">max@gmail.com</small>
-                  <a href="#" class="btn btn-primary btn-sm">View Profile</a>
+                    {{Auth::user()->name}}
+                  <small class="mb-5">Admin</small>
+                  {{--<a href="#" class="btn btn-primary btn-sm">View Profile</a>--}}
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                       {{ __('Logout') }} class="btn btn-block btn-danger"><i class="ion ion-power"></i> Log Out</a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
                 </p>
               </li>
-              
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-right">
-                  <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                    {{ __('Logout') }} class="btn btn-block btn-danger"><i class="ion ion-power"></i> Log Out</a>
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                  </form>
-                </div>
-			  </li>
             </ul>
           </li>
          

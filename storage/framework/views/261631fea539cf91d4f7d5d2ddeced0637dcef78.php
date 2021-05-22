@@ -9,7 +9,10 @@
 	
 	<!-- Select2 -->
 	<script src="<?php echo e(asset('/public/assets/vendor_components/select2/dist/js/select2.full.js')); ?>"></script>
-	
+
+
+	<script src="<?php echo e(asset('/public/assets/vendor_components/sweetalert/sweetalert.min.js')); ?>"></script>
+
 	<!-- InputMask -->
 	<script src="<?php echo e(asset('/public/assets/vendor_plugins/input-mask/jquery.inputmask.js')); ?>"></script>
 	<script src="<?php echo e(asset('/public/assets/vendor_plugins/input-mask/jquery.inputmask.date.extensions.js')); ?>"></script>
@@ -21,9 +24,6 @@
 	
 	<!-- bootstrap datepicker -->
 	<script src="<?php echo e(asset('/public/assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')); ?>"></script>
-	
-	<!-- bootstrap color picker
-	<script src="<?php echo e(asset('/public/assets/vendor_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js')); ?>"></script>	-->
 	
 	<!-- bootstrap time picker -->
 	<script src="<?php echo e(asset('/public/assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js')); ?>"></script>

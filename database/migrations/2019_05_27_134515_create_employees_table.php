@@ -23,6 +23,8 @@ class CreateEmployeesTable extends Migration
             $table->date('birth_date')->nullable();         
             $table->string('branch',50)->nullable();
             $table->string('blood_group',10)->nullable();
+            $table->string('bgcolor',20)->nullable();
+            $table->string('txtcolor',20)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

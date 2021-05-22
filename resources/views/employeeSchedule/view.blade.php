@@ -1,7 +1,9 @@
 @extends('layouts.master')
-@section('title','Employee')
+@section('title','Employee Schedule')
 @section('page_head')
+<style>
 
+</style>
 @endsection
 
 @section('bredscrum')
@@ -9,36 +11,38 @@
 @endsection
 
 @section('content')
-
     <!-- Main content -->
     <section class="content">
         <div class="row">
             <div class="col-12">
-
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Employee</h3>
-                        <button type="button" class="btn btn-warning pull-right" data-toggle="modal"
-                                data-target="#addmodal">Add
-                        </button>
+                        <h3 class="box-title">Employee Schedule</h3>
+                        <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#addmodal">Add</button>
+                        <span class="pull-right">&nbsp;</span>
+                        <a href="{{url('employeeSchedule/timetable')}}"><button type="button" class="btn btn-info  pull-right">TimeTable</button></a>
+
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
                         <table id="members" class="table table-bordered table-striped table-responsive dynamic-table">
                             <thead>
                             <tr>
+                                <th>Workout</th>
                                 <th>Name</th>
-                                <th>Contact</th>
-                                <th>Designation</th>
-                                <th>Branch</th>
-                                <th>Blood Group</th>
+                                <th>Batch_id</th>
+                                <th>Day</th>
+                                <th>Date</th>
+                                <th>Checkin</th>
+                                <th>Checkout</th>
+                                <th>Note</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
                             </tr>
                             </thead>
                         </table>
-
-
+                       
+                        <div id='loadingmessage' style='display:none;width:50px;height:50px;left : 32%;top : 32%;z-index: 9999;position : absolute;'><img src="{{url('/public/images/mz-loader-2.gif')}}"/></div>
                     </div>
                     <!-- /.box-body -->
                 </div>
@@ -53,81 +57,144 @@
     <div class="modal fade" id="addmodal">
         <div class="modal-dialog" role="document" style="min-width:95%;">
             <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Add</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="employee" method="post" id="addform"  role="form">
-                            @csrf
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="">Name</label>
-                                            <input type="text" class="form-control" id="name" name="name"
-                                                   placeholder="Enter Name">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="">Designation</label>
-                                            <input type="text" class="form-control pull-right" name="designation" id="designation" placeholder="Designation">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="">Contact No.</label>
-                                            <input type="text" class="form-control" id="contact" name="contact"
-                                                   placeholder="Enter Contact No." maxlength="10">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="">Email</label>
-                                            <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="">Address</label>
-                                        <textarea name="address" id="address" placeholder="Enter Address" name="address"
-                                                  class="form-control" rows="6"></textarea>
-                                    </div>
-                                </div>
+                <div class="modal-header">
+                    <h4 class="modal-title">Add</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form action="employeeSchedule" method="post" id="addform" role="form">
+                        @csrf
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label for="">Emp_id</label>
+                                <select name="employee_id" id="employee_id" class="form-control">
+                                    @foreach($employees as $employee)
+                                        <option value="{{$employee->id}}">{{$employee->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <div class="row ">                               
-                                 <!-- time Picker -->
-                              <div class="form-group col-md-2 bootstrap-timepicker">
-                                  <label>Time :</label>
-                                  <div class="input-group">
-                                    <input type="text" class="form-control timepicker">
+                            <div class="form-group col-md-3">
+                                <label for="">Batch_id</label>
+                                <select name="batch_id" id="batch_id" class="form-control">
+                                    <option value="0">Select Batch Time</option>
+                                    @foreach($batches as $batch)
+                                        <option value="{{$batch->id}}" data-checkin="{{$batch->starttime}}" data-checkout="{{$batch->endtime}}">{{$batch->starttime."-".$batch->endtime}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3 bootstrap-timepicker">
+                                <label>Check In Time :</label>
+                                <div class="input-group">
+                                    <input type="text" name="checkin" id="checkin" class="form-control timepicker">
                                     <div class="input-group-addon">
-                                      <i class="fa fa-clock-o"></i>
+                                        <i class="fa fa-clock-o"></i>
                                     </div>
-                                  </div>
-                                  <!-- /.input group -->
                                 </div>
-                                <!-- /.form group -->
-                              <div class="form-group col-md-2">
-                                    <label for="">Birthdate (dd-mm-yyyy)</label>
-                                    <input type="text" class="form-control pull-right datepicker" name="birth_date" id="birth_date" placeholder="Enter Birthdate">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="">Branch</label>
-                                    <input type="text" class="form-control" id="branch" name="branch"
-                                           placeholder="Enter Branch">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="">Blode Group</label>
-                                    <input type="text" class="form-control" id="blood_group" name="blood_group"
-                                           placeholder="Enter Blode Group">
-                                </div>
+                                <!-- /.input group -->
                             </div>
-                            <div class="modal-footer  float-right">
-                                <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
-                                <button type="Submit" class="btn btn-primary btn-lg float-right">Add</button>
+                            <div class="form-group col-md-3 bootstrap-timepicker">
+                                <label>Check Out Time:</label>
+                                <div class="input-group">
+                                    <input type="text" name="checkout" id="checkout" class="form-control timepicker">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </div>
+                                </div>
+                                <!-- /.input group -->
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="row ">
+                            <!-- time Picker -->
+                            <div class="form-group col-md-4">
+                                <label for="">Date (dd-mm-yyyy)</label>
+                                <input type="text" class="form-control pull-right datepicker" name="date" id="date"
+                                       placeholder="Enter date">
+                            </div>
+                            <div class="form-group col-md-4 bootstrap-timepicker">
+                                <label>Day :</label>
+                                <div class="input-group">
+                                    <input type="text" name="day" id="day" class="form-control">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="">Note</label>
+                                <input type="text" class="form-control pull-right" name="note" id="note"
+                                       placeholder="Enter Note">
+                            </div>
+                        </div>
+                        <div class="modal-footer  float-right">
+                            <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+                            <button type="Submit" class="btn btn-primary btn-lg float-right">Add</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    </div>
+
+    <div id="workoutrow" style="visibility: hidden;height: 0;">
+        <input type="hidden" name="empworkid[]" value="0">
+        <div class="row">
+            <div class="form-group col-md-4">
+                <select name="workout[]" id="workout" class="form-control">
+                    @foreach($workouts as $workout)
+                        <option>{{$workout->workout_name}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <input type="text" class="form-control" id="workout_description" name="workout_description[]"
+                       placeholder="Enter Description">
+            </div>
+            <div class="form-group col-md-3">
+                <input type="text" class="form-control" id="workout_duration" name="workout_duration[]"
+                       placeholder="Enter Duration">
+            </div>
+            <div class="form-group col-md-1">
+                <a class="btn btn-danger remove"><i class="fa fa-minus"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="workoutmodel">
+        <div class="modal-dialog" role="document" style="min-width:95%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Employee Workout : <span id='empdata' class="text-primary"></span> </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+
+                    <form method="post" id="workoutform" role="form">
+                        @csrf
+                        @method('PUT')
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="">WorkOut</label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="">Description</label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="">Duration</label>                               
+                            </div>
+                            <div class="form-group col-md-1">
+                                <a class="btn btn-primary" id="addbutton"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                        <div class="addrow">
+                        </div>
+                        <div class="modal-footer  float-right">
+                            <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+                            <button type="Submit" class="btn btn-primary btn-lg float-right">Update</button>
+                        </div>
+                    </form>
+                </div>
                 <!-- /.modal-content -->
             </div>
             <!-- /.modal-dialog -->
@@ -137,150 +204,239 @@
     <div class="modal fade" id="editmodal">
         <div class="modal-dialog" role="document" style="min-width:95%;">
             <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Edit</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" id="editform" role="form">
-                            @csrf
-                            @method('PUT')
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="">Name</label>
-                                            <input type="text" class="form-control" id="name" name="name"
-                                                   placeholder="Enter Name">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="">Designation</label>
-                                            <input type="text" class="form-control pull-right" name="designation" id="designation" placeholder="Designation">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label for="">Contact No.</label>
-                                            <input type="text" class="form-control" id="contact" name="contact"
-                                                   placeholder="Enter Contact No." maxlength="10">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="">Email</label>
-                                            <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="">Address</label>
-                                        <textarea name="address" id="address" placeholder="Enter Address" name="address"
-                                                  class="form-control" rows="6"></textarea>
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" id="editform" role="form">
+                        @csrf
+                        @method('PUT')
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label for="">Emp_id</label>
+                                <select name="employee_id" id="employee_id" class="form-control">
+                                    @foreach($employees as $employee)
+                                        <option value="{{$employee->id}}">{{$employee->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="">Batch_id</label>
+                                <select name="batch_id" id="batch_id" class="form-control">
+                                    <option value="0">Select Batch Time</option>
+                                    @foreach($batches as $batch)
+                                        <option value="{{$batch->id}}" data-checkin="{{$batch->starttime}}" data-checkout="{{$batch->endtime}}">{{$batch->starttime."-".$batch->endtime}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3 bootstrap-timepicker">
+                                <label>Check In Time :</label>
+                                <div class="input-group">
+                                    <input type="text" name="checkin" id="checkin" class="form-control timepicker">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
                                     </div>
                                 </div>
+                                <!-- /.input group -->
                             </div>
-                            <div class="row">
-                                <div class="form-group col-md-4">
-                                    <label for="">Birthdate (dd-mm-yyyy)</label>
-                                    <input type="text" class="form-control pull-right datepicker" name="birth_date" id="birth_date" placeholder="Enter Birthdate">
+                            <div class="form-group col-md-3 bootstrap-timepicker">
+                                <label>Check Out Time:</label>
+                                <div class="input-group">
+                                    <input type="text" name="checkout" id="checkout" class="form-control timepicker">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="">Branch</label>
-                                    <input type="text" class="form-control" id="branch" name="branch"
-                                           placeholder="Enter Branch">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="">Blode Group</label>
-                                    <input type="text" class="form-control" id="blood_group" name="blood_group"
-                                           placeholder="Enter Blode Group">
-                                </div>
+                                <!-- /.input group -->
                             </div>
-                            <div class="modal-footer  float-right">
-                                <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
-                                <button type="Submit" class="btn btn-primary btn-lg float-right">Update</button>
+                        </div>
+                        <div class="row ">
+                            <!-- time Picker -->
+                            <div class="form-group col-md-4">
+                                <label for="">Date (dd-mm-yyyy)</label>
+                                <input type="text" class="form-control pull-right datepicker" name="date" id="date"
+                                       placeholder="Enter date">
                             </div>
-                        </form>
-                    </div>
+                            <div class="form-group col-md-4 bootstrap-timepicker">
+                                <label>Day :</label>
+                                <div class="input-group">
+                                    <input type="text" name="day" id="day" class="form-control">
+                                </div>
+                                <!-- /.input group -->
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="">Note</label>
+                                <input type="text" class="form-control pull-right" name="note" id="note"
+                                       placeholder="Enter Note">
+                            </div>
+                        </div>
+                        <div class="modal-footer  float-right">
+                            <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
+                            <button type="Submit" class="btn btn-primary btn-lg float-right">Update</button>
+                        </div>
+                    </form>
+                </div>
                 <!-- /.modal-content -->
             </div>
             <!-- /.modal-dialog -->
         </div>
     </div>
+    <!--</div>-->
 @endsection
 
 @section('page_script')
     <!-- DataTables -->
     <script src="{{asset('/public/assets/vendor_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('/public/assets/vendor_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
-
+    <script
+        src="{{asset('/public/assets/vendor_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
 
     <!-- This is data table -->
-    <script src="{{asset('/public/assets/vendor_plugins/DataTables-1.10.15/media/js/jquery.dataTables.min.js')}}"></script>
+    <script
+        src="{{asset('/public/assets/vendor_plugins/DataTables-1.10.15/media/js/jquery.dataTables.min.js')}}"></script>
 
-
-    <script src="{{asset('/public/assets/vendor_components/jquery-validation-1.17.0/dist/jquery.validate.min.js')}}"></script>
+    <script
+        src="{{asset('/public/assets/vendor_components/jquery-validation-1.17.0/dist/jquery.validate.min.js')}}"></script>
 
 
 
     <script type="text/javascript">
         $(document).ready(function () {
-           // $('#members').DataTable();
-
+            // $('#members').DataTable();
+            var weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
             //Date picker
             $('.datepicker').datepicker({
                 format: 'dd-mm-yyyy',
                 autoclose: true
             });
 
+
+            $('#batch_id').change(function () {
+                var checkin = $(this).find(':selected').data('checkin');
+                var checkout = $(this).find(':selected').data('checkout');
+                $('#checkin').val(checkin);
+                $('#checkout').val(checkout);
+            });
+
+            $('#editform #batch_id').change(function () {
+                var checkin = $(this).find(':selected').data('checkin');
+                var checkout = $(this).find(':selected').data('checkout');
+                $('#editform #checkin').val(checkin);
+                $('#editform #checkout').val(checkout);
+            });
+
+            $('#date').change(function () {
+                var from = $(this).val().split("-");
+                var date = new Date(from[2], from[1] - 1, from[0]);
+                var selectedDate = new Date(date.setDate(date.getDate()));
+                $('#day').val(weekday[selectedDate.getUTCDay()]);
+            });
+
+            $('#editform #date').change(function () {
+                var from = $(this).val().split("-");
+                var date = new Date(from[2], from[1] - 1, from[0]);
+                var selectedDate = new Date(date.setDate(date.getDate()));
+                $('#editform #day').val(weekday[selectedDate.getUTCDay()]);
+            });
+
             //Timepicker
+            $("#workoutform .addrow").html("");
+            $("#workoutform #addbutton").click(function () {
+                var data = $('#workoutrow').html();
+                $("#workoutform .addrow").append(data);
+            });
+
+            $("body").on("click",".remove", function(){
+                $(this).parent('div').parent('div').remove();
+            });
+
+            /*$("body").on("click", ".removebutton", function () {
+                $(this).parentsUntil('span').remove();
+            });*/
             $('.timepicker').timepicker({
-              showInputs: false
-            });        
+                showInputs: false
+            });
 
             mytable = $('.dynamic-table').DataTable({
                 "processing": true,
                 "serverSide": true,
-                "ajax": "{{ url('employee/getDataTable') }}",
+                "ajax": "{{ url('employeeSchedule/getDataTable') }}",
                 columns: [
-                    {data: "name"},
-                    {data: "contact"},
-                    {data: "designation"},
-                    {data: "branch"},
-                    {data: "blood_group"},
+                    {data: "workout"},
+                    {data: "employee.name"},
+                    {data: "batch_id"},
+                    {data: "day"},
+                    {data: "date"},
+                    {data: "checkin"},
+                    {data: "checkout"},
+                    {data: "note"},
                     {data: "edit"},
-                    {data: "delete"}
+                    {data: "delete"},
                 ],
                 "columnDefs": [
-                    { "width": "20%", "targets": 0 },
-                    { "width": "5%", "targets": 4 },
-                    { "width": "5%", "targets": 5 }
+                    {"width": "15%", "targets": 1},
+                    {"width": "5%", "targets": 4},
+                    {"width": "5%", "targets": 5}
                 ]
             });
 
 
-            $(document).on('click', '.edit', function () {
+            $(document).on('click', '.edit', function () {                
                 var id = $(this).data("id");
-                var name = $(this).data('name');
-                var designation = $(this).data('designation');
-                var contact = $(this).data('contact');
-                var email = $(this).data('email');
-                var address = $(this).data('address');
-                var birth_date = $(this).data('birth_date');
-                var branch = $(this).data('branch');
-                var blood_group = $(this).data('blood_group');
-                
-                $('#editform #name').val(name);
-                $('#editform #designation').val(designation);
-                $('#editform #contact').val(contact);
-                $('#editform #email').val(email);
-                $('#editform #address').val(address);
-                $('#editform #birth_date').val(birth_date);
-                $('#editform #branch').val(branch);
-                $('#editform #blood_group').val(blood_group);
+                var employee_id = $(this).data('employee_id');
+                var batch_id = $(this).data('batch_id');
+                var day = $(this).data('day');
+                var date = $(this).data('date');
+                var checkin = $(this).data('checkin');
+                var checkout = $(this).data('checkout');
+                var note = $(this).data('note');
 
-                $('#editform').attr('action', 'employee/' + id);
-                $('#editmodal').modal('show');  
-            });   
+                $('#editform #name').val(name);
+                $('#editform #employee_id').val(employee_id);
+                $('#editform #batch_id').val(batch_id);
+                $('#editform #day').val(day);
+                $('#editform #date').val(date);
+                $('#editform #checkin').val(checkin);
+                $('#editform #checkout').val(checkout);
+                $('#editform #note').val(note);
+
+                $('#editform').attr('action', 'employeeSchedule/' + id);
+                $('#editmodal').modal('show');
+            });
+
+
+            $(document).on('click', '.workout', function () {
+
+                var id = $(this).data("id");
+
+                $.ajax(
+                    {
+                        url: "EmployeeWorkout/getEmployeeWorkoutData/" + id,
+                        type: 'GET',
+                        success: function (result) {
+                            var data="";
+                            $.each(result, function(key, value) {
+                                //console.log(value.employee_schedule_id);
+                                data += '<input type="hidden" name="empworkid[]" value="'+value.id+'"><div class="row"><div class="form-group col-md-4">' +
+                                    '<select name="workout[]" id="workout" class="form-control"><option>'+value.workout+'</option></select></div>' +
+                                    '<div class="form-group col-md-4">' +
+                                    '<input type="text" class="form-control" id="workout_description" name="workout_description[]" value="'+value.workout_description+'"></div>' +
+                                    '<div class="form-group col-md-3"><input type="text" class="form-control" id="workout_duration" name="workout_duration[]" value="'+value.workout_duration+'"></div>' +
+                                    '<div class="form-group col-md-1"><a class="btn btn-danger remove"><i class="fa fa-minus"></i></a></div></div>';
+
+                            });
+                            $('#workoutform .addrow').html(data);
+                        }
+                    });
+                var empname = $(this).data("empname");
+                var batch = $(this).data("batch");
+                var date = $(this).data("date");
+                var day = $(this).data("day");
+                $('#empdata').html(empname+' / '+batch+' / '+date+' / '+day);
+                $('#workoutform').attr('action', 'employeeWorkout/' + id);
+                $('#workoutmodel').modal('show');
+            });
 
             /* DELETE Record using AJAX Requres */
             $(document).on('click', '.delete', function () {
@@ -296,7 +452,7 @@
                     cancelButtonText: "No, cancel!",
                     closeOnConfirm: false,
                     closeOnCancel: false
-                }, function(isConfirm){
+                }, function (isConfirm) {
                     if (isConfirm) {
                         $.ajax(
                             {
@@ -375,16 +531,19 @@
                     $(element).removeClass(errorClass);
                     $(element.form).find("span[id=" + element.id + "-error]").removeClass(errorClass);
                 },
-                submitHandler: function (form,e) {
+                submitHandler: function (form, e) {
                     e.preventDefault();
+                   
+                   $('#loadingmessage').show();
                     $.ajax({
                         type: 'POST',
                         url: $(form).attr('action'),
                         data: new FormData($("#editform")[0]),
                         contentType: false,
                         cache: false,
-                        processData:false,
+                        processData: false,
                         success: function (data) {
+                             $('#loadingmessage').hide();
                             $("#editmodal .close").click();
                             swal("Good job!", "Your Record Updated Successfully", "success");
                             $(form).trigger('reset');
@@ -398,6 +557,42 @@
                     return false; // required to block normal submit since you used ajax
                 }
             });
+
+            var workouteditaddformValidator = $("#workoutform").validate({
+                ignore: ":hidden",
+                errorElement: "span",
+                errorClass: "text-danger",
+                validClass: "text-success",
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass(errorClass);
+                    $(element.form).find("span[id=" + element.id + "-error]").addClass(errorClass);
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).removeClass(errorClass);
+                    $(element.form).find("span[id=" + element.id + "-error]").removeClass(errorClass);
+                },
+                submitHandler: function (form, e) {
+                    e.preventDefault();
+                    $.ajax({
+                        type: 'POST',
+                        url: $(form).attr('action'),
+                        data: new FormData($("#workoutform")[0]),
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success: function (data) {
+                            $("#workoutmodel .close").click();
+                            swal("Good job!", "Your Record Updated Successfully", "success");
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            var response = JSON.parse(XMLHttpRequest.responseText);
+                            editaddformValidator.showErrors(response.errors);
+                        }
+                    });
+                    return false; // required to block normal submit since you used ajax
+                }
+            });
+
 
         });
     </script>

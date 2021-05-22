@@ -20,6 +20,8 @@ class Employee extends Model
         'branch',
         'blood_group',
         'birth_date',
+        'bgcolor',
+        'txtcolor',
     ];
 
     public function setBirthDateAttribute($value)
@@ -34,5 +36,10 @@ class Employee extends Model
         {
             return Carbon::parse($value)->format('d-m-Y');
         }
+    }
+
+    public function employeeSchedules()
+    {
+        return $this->hasMany(EmployeeSchedule::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\EmployeeWorkout;
+use App\EmployeeSchedule;
 use Illuminate\Http\Request;
 
 class EmployeeWorkoutController extends Controller
@@ -14,7 +15,8 @@ class EmployeeWorkoutController extends Controller
      */
     public function index()
     {
-        //
+        
+
     }
 
     /**
@@ -35,7 +37,7 @@ class EmployeeWorkoutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -67,9 +69,30 @@ class EmployeeWorkoutController extends Controller
      * @param  \App\EmployeeWorkout  $employeeWorkout
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EmployeeWorkout $employeeWorkout)
+    public function update(Request $request, $id)
     {
-        //
+        //$request->all();
+        //$employeeSchedule = EmployeeSchedule::findOrFail($id);
+        $request->merge(['employee_schedule_id'=>$id]);
+        $i=0;
+        foreach($request->workout as $ew)
+        {
+            if($request->empworkid[$i]<=0)
+            {   EmployeeWorkout::insert(['employee_schedule_id'=>$id,
+                'workout'=>$request->workout[$i],
+                'workout_description'=>$request->workout_description[$i],
+                'workout_duration'=>$request->workout_duration[$i]]);
+            }
+            else{
+                EmployeeWorkout::where('id',$request->empworkid[$i])->update(['employee_schedule_id'=>$id,
+                    'workout'=>$request->workout[$i],
+                    'workout_description'=>$request->workout_description[$i],
+                    'workout_duration'=>$request->workout_duration[$i]]);
+            }
+            $i++;
+        }
+        
+        
     }
 
     /**
@@ -81,5 +104,10 @@ class EmployeeWorkoutController extends Controller
     public function destroy(EmployeeWorkout $employeeWorkout)
     {
         //
+    }
+
+    public function getEmployeeWorkoutData($employee_schedule_id)
+    {
+        return EmployeeWorkout::where('employee_schedule_id',$employee_schedule_id)->get();
     }
 }

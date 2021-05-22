@@ -24,6 +24,8 @@ class CreateEmployeeSchedulesTable extends Migration
             $table->string('checkin',12);
             $table->string('checkout',12);
             $table->string('note');
+            $table->string('bgcolor',12);
+            $table->string('txtcolor',12);
             $table->timestamps();
             $table->softDeletes();
         });

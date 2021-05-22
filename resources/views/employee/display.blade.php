@@ -22,7 +22,7 @@
                     <table class="table table-bordered table-responsive">
                         <tbody>
                             @php
-                                $data = json_decode($member);
+                                $data = json_decode($employee);
                             @endphp
                             @foreach($data as $key => $value)
                             <tr>

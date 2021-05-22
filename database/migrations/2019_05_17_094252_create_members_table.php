@@ -24,7 +24,7 @@ class CreateMembersTable extends Migration
             $table->integer('weight')->nullable();  
             $table->date('birth_date')->nullable();         
             $table->string('reference',50)->nullable();
-            $table->string('married',10)->nullable();
+            $table->string('married',20)->nullable();
             $table->string('status',20)->nullable();
             $table->string('goal')->nullable();
             $table->text('medical')->nullable();

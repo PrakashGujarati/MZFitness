@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Employee;
+use App\Workplace;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use DataTables;
@@ -17,7 +18,8 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-       return view('employee.view');
+        $workplaces = Workplace::all();
+        return view('employee.view',compact('workplaces'));
     }
 
     /**
@@ -71,7 +73,8 @@ class EmployeeController extends Controller
      */
     public function edit(employee $employee)
     {
-        return view('employee.view',compact('employee'));
+        $workplaces = Workplace::all();
+        return view('employee.view',compact('employee','workplaces'));
     }
 
     /**
@@ -117,6 +120,9 @@ class EmployeeController extends Controller
             ->addColumn('name',function ($employee){
                 return '<a href="employee/'.$employee->id.'">'.$employee->name.'</a>';
             })
+            ->addColumn('text',function ($employee){
+                return '<p class="form-control sampletext" style="background-color:'.$employee->bgcolor.';color:'.$employee->txtcolor.'">'.explode(' ',$employee->name)[0].'</p>';
+            })
             ->addColumn('edit',function ($employee){
                 return '<button type="button" class="edit btn btn-sm btn-primary fa fa-pencil" 
                 data-name="'.$employee->name.'"
@@ -127,12 +133,14 @@ class EmployeeController extends Controller
                 data-branch="'.$employee->branch.'",
                 data-blood_group="'.$employee->blood_group.'",
                 data-birth_date="'.$employee->birth_date.'",
+                data-bgcolor="'.$employee->bgcolor.'",
+                data-txtcolor="'.$employee->txtcolor.'",
                 data-id="'.$employee->id.'"></button>';
             })
             ->addColumn('delete',function ($employee){
                 return '<button type="button" class="delete btn btn-sm btn-danger  fa fa-trash" data-delete-id="'.$employee->id.'" data-token="'.csrf_token().'" ></button>';
             })
-            ->rawColumns(['name','edit','delete'])
+            ->rawColumns(['name','text','edit','delete'])
             ->make(true);
     }
 }
